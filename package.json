@@ -1,0 +1,6 @@
+{
+  "name": "D's Chat Version 2.0",
+  "version": "0.0.1",
+  "description": "my first socket.io app",
+  "dependencies": {}
+}
