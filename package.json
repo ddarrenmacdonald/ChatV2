@@ -1,6 +1,9 @@
 {
-  "name": "D's Chat Version 2.0",
+  "name": "Ds-Chat-V2",
   "version": "0.0.1",
-  "description": "my first socket.io app",
-  "dependencies": {}
+  "description": "My UIT chat app",
+  "dependencies": {
+    "express": "^4.9.8",
+    "socket.io": "^1.1.0"
+  }
 }
