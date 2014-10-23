@@ -4,6 +4,7 @@
   "description": "My UIT chat app",
   "dependencies": {
     "express": "^4.9.8",
+    "node-redis": "^0.1.7",
     "socket.io": "^1.1.0"
   }
 }

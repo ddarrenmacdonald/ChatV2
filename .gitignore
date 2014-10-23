@@ -12,3 +12,7 @@ node_modules
 
 # This is Desktop Services Store, a local file used my OSX
 .DS_Store
+
+#Redis ignores
+dump.rdb
+redis-stable/
