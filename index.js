@@ -12,6 +12,7 @@ client.on("error", function (err) {
 });
 
 client.set("app name", "simple chat", redis.print);
+
 //* End Redis Code *//
 
 
@@ -21,6 +22,12 @@ app.get('/', function(req, res){
 
 //* This Socket IO function logs when a user connect *//
 io.on('connection', function(socket){
+  //* This adds the Redis function to the socket *//
+  
+  client.get('app name', function(err, reply) {
+  console.log('app name is', reply);
+});
+
   console.log('a user connected');
 
 //* This Socket IO function logs when a user disconnects *//
