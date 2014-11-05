@@ -3,18 +3,23 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 //* Adding in the Redis functionality *//
-
+//* With multiple channels *//
 var redis = require("redis"),
-    client = redis.createClient();
+    client1 = redis.createClient();
+    client2 = redis.createClient();
+    channel = 'chatroom';
 
-client.on("error", function (err) {
+client1.on("error", function (err) {
+  console.log("Error " + err);
+});
+
+client2.on("error", function (err) {
   console.log("Error " + err);
 });
 
 client.set("app name", "ChatCon", redis.print);
 
 //* End Redis Code *//
-
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
