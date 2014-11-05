@@ -2,6 +2,19 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+//* Adding in the Redis functionality *//
+
+var redis = require("redis"),
+    client = redis.createClient();
+
+client.on("error", function (err) {
+  console.log("Error " + err);
+});
+
+client.set("app name", "simple chat", redis.print);
+//* End Redis Code *//
+
+
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
