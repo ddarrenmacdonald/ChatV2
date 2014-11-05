@@ -15,4 +15,4 @@ node_modules
 
 #Redis ignores
 dump.rdb
-redis-stable/
+redis-2.8.17/

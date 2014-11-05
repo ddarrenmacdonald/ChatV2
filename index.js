@@ -11,7 +11,7 @@ client.on("error", function (err) {
   console.log("Error " + err);
 });
 
-client.set("app name", "simple chat", redis.print);
+client.set("app name", "ChatCon", redis.print);
 
 //* End Redis Code *//
 
@@ -27,8 +27,12 @@ io.on('connection', function(socket){
   client.get('app name', function(err, reply) {
   console.log('app name is', reply);
 });
-
+  client.hgetall('history', function(err, replies) {
+    socket.emit('history', replies);
+  });
+  
   console.log('a user connected');
+
 
 //* This Socket IO function logs when a user disconnects *//
   socket.on('disconnect', function(){
