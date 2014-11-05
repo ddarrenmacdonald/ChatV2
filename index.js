@@ -30,20 +30,28 @@ io.on('connection', function(socket){
   client.hgetall('history', function(err, replies) {
     socket.emit('history', replies);
   });
-  
-  console.log('a user connected');
 
+  console.log('a user connected');
 
 //* This Socket IO function logs when a user disconnects *//
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });
-});
+//* Adding message history *//
+  socket.on('talk', function(msg){
+    console.log('talk: ' + msg);
+    socket.broadcast.emit('talk', msg);
+    client.incr('msg_id', function(err, msg_id) {
+      console.log('msg_id', msg_id);
+      client.hset('history', msg_id, msg);
+    });
+  });
 
+//* Remove this code block 
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
-
+  });
 
 //* Using console.log to test *//
     console.log('chat message', msg);
